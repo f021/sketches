@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sketch-006: land wave</title>
+	<style>
+		body {
+			margin:0;
+		}
+
+		.customize {
+			position:absolute;
+			bottom:0;
+			color:white;
+			background:rgba(122,122,200,.5);
+
+		}
+
+		form {
+			
+		}
+
+		legend {
+			color:green;
+		}
+
+		fieldset {
+			border:none;
+		}
+
+		input {
+			display:block;
+		}
+
+		label input {
+			display:inline-block;
+		}
+
+		label {
+			display:block;
+		}
+
+		form {
+			background: transparent;
+		}
+
+	</style>
+</head>
+<body>
+	<form name="my" class="customize">
+		<fieldset>
+			<label>Test<span>:10</span></label>
+			<input type="text" value="10" name='x'>
+			<input type='text' value='20' name='y'>
+			<fieldset>
+				<legend>Coordinate</legend>
+					<label><input type="range" value='30' name="r" min="0" max="255"><span></span></label>
+					<label><input type="range" value='30' name="g"><span></span></label>
+					<label>
+						<input type="range" value='30' name="b">
+						<span></span>
+					</label>
+			</fieldset>
+			<fieldset>
+				<legend>Shape</legend>
+				<label>ellipse
+					<input type='radio' value="1" name="fig" checked>
+				</label>
+				<label>rect
+					<input type='radio' value="0" name="fig"></input>
+				</label>
+			</fieldset>
+		</fieldset>
+	</form>
+
+<!-- 	<form>
+		hello
+	</form> -->
+
+
+	<script src='js/p5.js'></script>
+	<script>
+
+
+	// var input = document.createElement('input');
+	// input.className = 'customize';
+	// input.type = 'range';
+	// input.value = '20';
+	// document.body.appendChild(input);
+
+	var a = {
+		r:0,
+		g:0,
+		b:0,
+		x:10,
+		y:20,
+		fig:1
+	};
+
+
+
+	var form = {
+
+		coordinate: {
+			x : {
+				name:'x',
+				value:'10',
+				type:'range',
+			},
+
+			y: {
+
+			}
+		},
+
+		color: {
+			r: {
+
+			},
+			g: {
+
+			},
+			b: {
+
+			}
+		}
+	}
+
+
+
+
+	// function add
+
+
+	// function makeForm(obj){
+	// 	var elm = document.createElement('form');
+
+	// 	for (var i in obj) {
+	// 		var field = document.createElement('fieldset');
+	// 		field.appendChild(document.createElement('legend'));
+	// 		field.firstElementChild.textContent = i;
+	// 		for (var j in i) {
+	// 			var label = document.createElement('label');
+	// 			field.appendChild(document.createElement('span'));
+	// 			field.firstElementChild.textContent = j;
+	// 		}
+	// 		elm.appendChild(field);
+	// 	};
+
+	// 	document.body.appendChild(elm);
+	// }
+
+
+	document.forms.my.addEventListener('input', function(e){
+		a[e.target.name]=Number(e.target.value);
+		console.log(e.target.name, ':', e.target.value);
+		e.target.parentElement.lastChild.textContent = e.target.value;
+		
+	});
+
+
+	document.forms.my.addEventListener('change', function(e){
+		a[e.target.name]=Number(e.target.value);
+	});
+
+
+var i =0;
+var j = 0;
+
+	function setup(){
+		w = window.innerWidth;
+		h = window.innerHeight;
+		createCanvas(300,150);
+		background(0);
+		// printText(a, {x:10,y:20}, 200);
+		// makeForm(form);
+		rectMode(CENTER);
+	}
+
+	function draw(){
+		background(a.r);
+		textSize(32);
+		text(''+a.r, 10,30);
+	// 	if (a.fig) {
+	// 		ellipse(a.r,a.b,a.g,30)
+	// 	} else {
+	// 	rect(a.r, a.b, a.g, 30);
+	// };
+
+		while(j<10){
+		for (i = 0; i < w; i++){
+			stroke(0);
+			strokeWeight(0);
+			fill(25*i, 25*j, 120);
+			ellipse(i, 0, random(5/j*5), random(125/j*5));
+		};
+		j++;
+	}
+}
+
+
+	function land(){
+		var j =0;
+		while(j<10){
+		for (i = 0; i < w; i++){
+			stroke(0);
+			strokeWeight(0);
+			fill(25*a.r, 25*j, 120);
+			if (a.fig) {
+					ellipse(i, 0, random(125/j*a.g), random(125/j*a.b));
+				} else {
+			rect(i, 0, random(125/j*a.g), random(125/j*a.b));
+		// j--;
+			};
+		};
+		j++;
+	}
+	}
+
+
+	function printText(subj){
+		
+	}
+
+
+
+	</script>
+</body>
+</html>

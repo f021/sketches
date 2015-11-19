@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sketch-006: land wave</title>
+	<style>
+		body {
+			margin:0;
+		}
+
+	</style>
+</head>
+<body>
+
+
+
+
+<!-- 	<form>
+		hello
+	</form> -->
+
+
+	<script src='js/p5.js'></script>
+	<script>
+
+	var w,h;
+	var walk, hist;
+
+	w = window.innerWidth;
+	h = window.innerHeight;
+
+
+	function walker(param){
+
+		var x = param.x;
+		var y = param.y;
+
+		return {
+
+			step: function(){
+				x += random(-2,2);
+				y += random(-2,2);
+			},
+
+			render: function(i) {
+				strokeWeight(0);
+				fill(50+i*5, 200, 180 + i/5, i*5);
+				rect(x, y, 20, 20);
+			},
+
+			get: function(){
+				return {x,y};
+			}
+		}
+	}
+
+
+	function life(age){
+
+		var arr = [];
+
+		return {
+			add: function(e) {
+				if (arr.length === age) {
+					arr.shift();
+				} else {
+					arr.push(e);
+				}
+			},
+
+			render: function() {
+				arr.forEach(function(e, index){
+					walker(e).render(index);
+				});
+			}
+		}
+	}
+
+
+	function setup(){
+		createCanvas(w,h);
+		walk = walker({x: w/2, y: h/2});
+		hist = life(100);
+	}
+
+
+	function draw() {
+		background(255);
+		walk.step();
+		hist.add(walk.get());
+		hist.render();
+	}
+
+
+
+
+    	
+    // document.forms.my.addEventListener(e => {
+    // 	let c = document.createElement('p');
+    // 	// c.value = e.target.name;
+    // 	// a.sound = e.target.name;
+    // 	// c.value += a.sound;
+    // 	// document.body.appendChild(c);
+    // 	// a.talk();
+    // 	console.log(e);
+    // 	});
+
+
+
+
+
+
+
+
+// 	var i = 0;
+// 	var j = 0;
+// 	var angel =0;
+// 	var w,h;
+
+
+// 	function setup(){
+// 		w = window.innerWidth;
+// 		h = window.innerHeight;
+// 		createCanvas(w,h);
+// 		background(0);
+// 		// stroke(255);
+// 		frameRate(.5);
+// 	}
+
+// 	function draw(){
+
+
+// lo();
+// }
+
+
+// function lo(){
+// 	var j = 0;
+
+// 		while (j < 10) {
+// 			for (i = 0; i < w; i++){
+// 				stroke(25*j);
+// 				line(i, 0, i, random(w*(1/j)));
+// 			};
+// 		j++;
+
+// 	}
+// }
+
+
+
+	</script>
+</body>
+</html>

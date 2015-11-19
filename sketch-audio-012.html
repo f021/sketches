@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>sketch-006: land wave</title>
+  <style>
+    body {
+      margin:0;
+    }
+  </style>
+</head>
+<body>
+
+  <script src='js/p5.js'></script>
+  <script>
+
+  'use strict';
+
+  let size = 10;
+  let step = 20;
+  let z = 0;
+  let len = 1;
+
+  function setup() {
+    createCanvas(window.innerWidth, window.innerHeight);
+    background(0);
+    stroke(255);
+    frameRate(12);
+    rectMode(CENTER);
+  };
+
+  function draw() {
+    background(0);
+    noFill();
+    // applyMatrix(1,0,z,1,0,0);
+
+    for (let i = 100; i < width - 100; i+=step) {
+      for (let j = 100; j < height - 100; j+=step) {
+
+        // rotate(z);
+        switch (Math.round(random(0,1))) {
+          case 0:
+            stroke(random(255), random(255));
+            strokeWeight(random(1));
+            rect(i, j, 10, 10);
+            break;
+          case 1:
+            stroke( 200, random(255), random(255));
+            strokeWeight(random(10));
+            ellipse(i, j, size, size);
+            break;
+          // case 2:
+          //   rect(i, j, i, j+size);
+          //   break;
+          // case 3:
+          //   rect(i+size, j, i+size, j+size);
+          //   break;
+          // case 4:
+          //   rect(i, j, i+size, j+size);
+          //   break;
+          // case 5:
+          //   rect(i, j+size, i+size, j);
+            // break;
+          default:
+          console.log('asdf');
+        };
+    	 };
+      };
+      z += 0.01;
+
+  }
+
+
+
+  </script>
+</body>
+</html>

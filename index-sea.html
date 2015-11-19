@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sketch-001: walker</title>
+	<style>
+		body {
+			margin:0;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript" src="../js/p5.js"></script>
+	<script>
+
+
+			var adam;
+			var life;
+			var h =[];
+
+
+			function setup(){
+				createCanvas(window.innerWidth, window.innerHeight);
+				background(244,204,0);
+
+				adam = new Walker({
+					x: width/2,
+					y: height/2,
+					w: 10,
+					h: 10
+				});
+
+				life = new Life({
+					age: 10
+				});
+
+				life.update(adam);
+				background(244,204,0);
+				h.push(adam);
+			}
+
+			function draw(){
+				// background(244,204,0);
+				// life.history.map(function(elm, index){
+				// 	fill(255, index);
+				// });
+				// life.update(adam.update());
+				// adam.update();
+				// if (h.length > 5) {
+				// 	h.shift();
+				// };
+
+				// h.push(adam);
+
+				h.map(function(elm){
+					// rect(elm.x,elm.y,elm.w,elm.h);
+					// console.log(elm);
+				});
+				// h[h.length-1].draw();
+				fill(255);
+				// h[0].draw();
+				// // fill(0);
+				// h[1].draw();
+				
+			}
+
+
+			function Life(obj){
+				this.history = [];
+				this.age = obj.age;
+			}
+
+			Life.prototype.update = function(elm){
+				if (this.history.length > this.age) {
+					this.history.shift();
+				}
+				this.history.push(elm);
+
+			}
+
+			Life.prototype.draw = function(){
+
+				// this.history[this.history.length-1].draw();
+
+				this.history.map(function(elm, index){
+					// fill(0, 255-index*10);
+					elm.draw();
+				});
+			}
+
+
+			function Walker(obj){
+				this.x = obj.x;
+				this.y = obj.y;
+				this.w = obj.w;
+				this.h = obj.h;
+			}
+
+			Walker.prototype.draw = function(){
+				rect(this.x, this.y, this.w, this.h);
+			};
+
+			Walker.prototype.update = function(){
+				this.x = rule(this.x);
+				this.y = rule(this.y);
+			}
+
+			function rule(i){
+				return i + random(-1,1)*10; 
+			}
+
+
+	</script>
+</body>
+</html>

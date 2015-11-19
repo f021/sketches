@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sketch-005: b&w background</title>
+	<style>
+		body {
+			margin:0;
+
+			.slider {
+				position:absolute;
+				top:10;
+				left:30;
+			}
+
+
+		}
+	</style>
+</head>
+<body>
+	<script src='../js/p5.js'></script>
+	<script>
+
+	var i = 0;
+	var j = 0;
+	var w,h;
+
+
+	function setup(){
+		w = window.innerWidth;
+		h = window.innerHeight;
+		createCanvas(w,h);
+		background(0);
+		fill(255);
+		// stroke(255);
+		frameRate(5);
+	}
+
+	function draw(){
+
+generate();
+}
+
+	function generate(){
+		i=0;
+		j=0;
+		while (j < 10) {
+			for (i = 0; i < w; i++){
+				stroke(25*j);
+				line(i, 0, i, random(125/j*5));
+			};
+		j++;
+	}
+}
+
+
+	</script>
+</body>
+</html>
