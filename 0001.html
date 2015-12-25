@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sketch-001: cells</title>
+	<style>
+		body {
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript" src="./js/p5.js"></script>
+	<script>
+
+			var cells = [];
+			var count = 100;
+
+			function Cell(){
+				this.x = width/2;
+				this.y = height/2;
+				this.rx = random(10,30);
+				this.ry = this.rx;
+				this.vx = random(-5,5);
+				this.vy = random(-5,5);
+				this.color = new Rgb();
+			}
+
+
+			Cell.prototype.update = function(index){
+
+				this.x = this.x + this.vx;
+				this.y = this.y + this.vy;
+				if (this.x > width || this.x < 0) {
+					this.vx = -this.vx;
+				};
+				if (this.y > height || this.y < 0) {
+					this.vy = -this.vy;
+				};				
+			};
+
+			Cell.prototype.draw = function(){
+				fill(this.color.r, this.color.g);
+				rect(this.x, this.y, this.rx, this.ry);
+			};
+
+		 function Rgb(){
+				this.r = random(255);
+				this.g = random(255);
+				this.b = random(255);
+			}
+
+			function generateLife(len){
+				var arr=[];
+				for(;len>0;len--){
+					arr.push(new Cell());
+				};
+				return arr;
+			}
+
+			function setup() {
+				createCanvas(506, 506);
+				rectMode(CENTER);
+				cells = generateLife(count);
+			}
+
+			function draw() {
+				background(254,204,0);
+				stroke(255);
+				strokeWeight(1);				
+				cells.map(function(cell,index){
+					cell.draw();
+					cell.update(index);
+				});
+			}
+
+	</script>
+</body>
+</html>

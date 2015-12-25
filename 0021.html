@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>0021</title>
+  <style>
+    body {
+      margin:0;
+    }
+  </style>
+</head>
+<body>
+
+  <script src='js/p5.js'></script>
+  <script>
+
+  'use strict';
+
+  let size = 10;
+  let step = 30;
+  let z = 0;
+  let len = 1;
+
+  function setup() {
+    createCanvas(506, 506);
+    strokeWeight(1);
+    frameRate(60);
+    background(0);
+  };
+
+  function draw() {
+    noFill();
+    stroke(255);
+    for(let i = step; i < width - size; i+=step) {
+      for(let j = step; j < height - size; j+=step) {
+        random(1) > 0.99
+          ? strokeWeight(random(15))
+          : strokeWeight(1);
+        ellipse(i, j, size,  size);
+      };
+    };
+  }
+
+  </script>
+</body>
+</html>

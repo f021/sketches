@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>sketch-006: land wave</title>
+  <style>
+    body {
+      margin:0;
+    }
+  </style>
+</head>
+<body>
+
+  <script src='js/p5.js'></script>
+  <script>
+
+  'use strict';
+
+  const w = 506;
+  const h = w;
+  let size = 10;
+  let step = 10;
+  let z = 1;
+  let len = 1;
+  const min = size * 5;
+  const max = w - min - step;
+
+  function setup() {
+    createCanvas(w, h);
+    background(0);
+    stroke(255);
+    frameRate(1);
+  };
+
+  function draw() {
+    background(0);
+    noFill();
+
+    for (let i = min; i < max; i+=step) {
+      for (let j = min; j < max; j+=step) {
+        !Math.round(random(0,1)) ? line(i,j,i+size,j+size) :
+        line(i,j+size,i+size,j);
+    	};
+      };
+    (z < 0) ? z+=0.01 : z-= 0.01;
+  }
+
+
+
+  </script>
+</body>
+</html>

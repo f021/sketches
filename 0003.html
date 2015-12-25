@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0003</title>
+	<style>
+		body {
+			margin:0;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript" src="./js/p5.js"></script>
+	<script>
+
+
+			var h = [];
+
+			function setup() {
+				createCanvas(506, 506);
+				rectMode(CENTER);
+				h.push([width/2, height/2]);
+			}
+
+			function draw() {
+				background(0);
+					update();
+					h.map(function(dot,index){
+						fill(random(100,150), index * 4, random(100,255));
+						rect(dot[0], dot[1], 10,10)
+					})
+			}
+
+			function update(){
+				var last = h[h.length-1];
+				h.push([walker(last[0]), walker(last[1])]);
+				if (h.length > 256/4) {
+					h.shift();
+				}
+			}
+
+			function walker(a){
+				return a + go();
+			}
+
+			function go(){
+				return random(-1,1)*10;
+			}
+
+
+	</script>
+</body>
+</html>

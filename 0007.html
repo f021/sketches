@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>0007</title>
+  <style>
+    body {
+      margin:0;
+    }
+  </style>
+</head>
+<body>
+
+  <script src='js/p5.js'></script>
+  <script>
+
+  'use strict';
+
+  let size = 30;
+  let space = 506/size * 6;
+  let z = 0;
+  let len = 1;
+
+  function setup() {
+    createCanvas(506, 506);
+    background(0);
+    stroke(255);
+    frameRate(12);
+  };
+
+  function draw() {
+    background(0);
+
+    for (let i = 100; i < width - 100; i += space) {
+      len = random(10);
+      for (let j = 100; j < height - 100; j += space) {
+        noFill();
+        stroke(random(255), random(255), random(255));
+        for (let x = 0; x <10; x++) {
+          strokeWeight(random(5));
+          arc(i, j, x*10+20, x*10+20, random(j+z), random(z+i), CHORD);
+          stroke(120, random(255), random(255));
+          fill(random(255))
+          noFill();
+        }
+      }
+    }
+    z += 0.1;
+  }
+
+
+
+  </script>
+</body>
+</html>

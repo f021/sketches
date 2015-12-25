@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0019</title>
+	<style>
+		body {
+			margin:0;
+		}
+	</style>
+</head>
+<body>
+	<script src='js/p5.js'></script>
+	<script>
+		var w = 506;
+		var h = 506;
+		var i = 100;
+
+		function setup(){
+			createCanvas(w,h);
+		}
+
+		function draw() {
+			ellipse(w/2, h/2,random(i, 200+i), random(i, 200+i));
+			rectMode(CENTER);
+			fill(0)
+			rect(w/2,h/2, random(200), random(200));	
+		}
+	</script>
+</body>
+</html>

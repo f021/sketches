@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>0016</title>
+  <style>
+    body {
+      margin:0;
+    }
+  </style>
+</head>
+<body>
+
+  <script src='js/p5.js'></script>
+  <script>
+
+  'use strict';
+
+  const w = 506;
+  const h = w;
+  let size = 10;
+  let step = 10;
+  let z = 0;
+  let len = 1;
+  const min = size * 5;
+  const max = w - min;
+
+  function setup() {
+    createCanvas(w, h);
+    background(0);
+    stroke(255);
+    frameRate(24);
+  };
+
+  function draw() {
+    background(0);
+    for (let i = min; i < max; i+=step) {
+      for (let j = min; j < max; j+=step) {
+        fill(200, random(200),random(200));
+        noStroke();
+        rect(i,j,random(size),random(size));
+    	};
+    };
+    z += 1;
+    step += 3.5;
+    size += 3.5;
+  }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0005</title>
+	<style>
+		body {
+			margin:0;
+		}
+	</style>
+</head>
+<body>
+	<script src='./js/p5.js'></script>
+	<script>
+
+	var w = 506;
+	var h = 506;
+
+
+	function setup(){
+		createCanvas(w, h);
+		frameRate(24);
+	}
+
+	function draw(){
+		background(0);
+		generate();
+	}
+
+	function generate(){
+		var i=0;
+		var j=0;
+		while (j < 10) {
+			for (i = 0; i < w; i++){
+				stroke(25*j);
+				line(i, 0, i, random(125/j*5));
+			};
+			j++;
+		}
+	}
+
+
+	</script>
+</body>
+</html>

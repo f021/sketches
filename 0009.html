@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>0009</title>
+  <style>
+    body {
+      margin:0;
+    }
+  </style>
+</head>
+<body>
+
+  <script src='js/p5.js'></script>
+  <script>
+
+  'use strict';
+
+  let size = 50;
+  let space = 100;
+  let z = 0;
+  let len = 1;
+
+  function setup() {
+    createCanvas(506, 506);
+    background(0);
+    stroke(255);
+    frameRate(12);
+  };
+
+  function draw() {
+    background(0);
+
+    for (let i = 100; i < width - 100; i+=space) {
+      // background(0);
+      len = random(10);
+      for (let j = 100; j < height - 100; j+=space) {
+        // background(0);
+        // stroke(i); 
+        // fill(random(255));
+        // ellipse(i, j, 10,10);
+
+        // noFill();
+                  // stroke(random(255), random(255), random(255));
+                            // strokeWeight(random(5));
+
+        for (let x = 0; x <10; x+=2) {
+          // strokeWeight(x);
+        arc(i, j, x*10+20, x*10+20, i*size+z+x, z+i-x, OPEN);
+        // stroke(120, random(255), random(255));
+        // line(i+z, j, i+size, j+size); 
+        // line(i+size, j, i, j+size);
+        // fill(random(255))
+        noFill();
+        // fill(random(255))
+  }
+
+      }
+      // background(0);
+    }
+    z+= 0.1;
+  }
+
+
+
+  </script>
+</body>
+</html>

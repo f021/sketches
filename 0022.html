@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>0022</title>
+  <style>
+    body {
+      margin:0;
+    }
+  </style>
+</head>
+<body>
+
+  <script src='js/p5.js'></script>
+  <script>
+
+  'use strict';
+
+  let x, y, x1, y1, i;
+  let size = 100;
+
+  function setup() {
+  	createCanvas(506, 506);
+  	background(0);
+  	stroke(100);
+  }
+
+  function draw() {
+  	background(0);
+  	stroke(200, 0, 0, 100);
+  	strokeWeight(1);
+  	line(0, height/2, width, height/2);
+  	strokeWeight(1);
+  	stroke(200, random(200), random(200));
+  	x = 0
+  	y = height/2;
+  	while (x<width) {
+  		x1 = x + random(size/mouseX);
+  		y1 = y +  random(-size/mouseY, size/mouseY);
+  		line(x, y, x1, y1);
+  		x = x1;
+  		y = y1;
+  	}
+  }
+
+  </script>
+</body>
+</html>

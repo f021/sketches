@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0017</title>
+	<style>
+		body {
+			margin:0;
+		}
+	</style>
+</head>
+<body>
+	<script src='js/p5.js'></script>
+	<script>
+
+	var w = 506;
+	var h = w;
+	var xoff = .0;
+	var xincrement = .01;
+	var opacity = 0;
+
+	function setup(){
+		createCanvas(w,h);
+		background(0);
+		frameRate(60);
+	}
+
+
+	function draw() {
+ 		fill(50, 10);
+  	rect(0,0,w,h);
+  	stroke(200);
+		strokeWeight(10);
+		point(random(w), h/2);
+		point(noise(xoff)*w, h/2 + 30);
+		point(randomGaussian(0,w)+ w/2, h/2 - 30)
+		xoff+=xincrement;
+		opacity++;
+	}
+
+	</script>
+</body>
+</html>

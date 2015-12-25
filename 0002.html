@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0002</title>
+	<style>
+		body {
+			margin:0;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript" src="./js/p5.js"></script>
+	<script>
+
+var cells = [];
+var count = 500;
+
+function Cell(){
+	this.x = random(width);
+	this.y = random(height);
+	this.rx = random(5,10);
+	this.ry = this.rx;
+	this.vx = random(-2,2);
+	this.vy = random(-2,2);
+	this.color = random(122,255);
+}
+
+
+Cell.prototype.update = function(){
+	if (this.x > width || this.x < 0) { this.vx *= -1; }
+	if (this.y > height || this.y < 0) { this.vy *= -1; }
+	this.x = this.x + this.vx;
+	this.y = this.y + this.vy;
+}
+
+Cell.prototype.draw = function(){
+	fill(this.color);
+	ellipse(this.x, this.y, this.rx, this.ry);
+}
+
+function makeLife(len){
+	var arr=[];
+	for(;len>0;len--){
+		arr.push(new Cell());
+	}
+	return arr;
+}
+
+function setup() {
+	createCanvas(506, 506);
+	cells = makeLife(count);
+}
+
+function draw() {
+	background(254,204,0);
+	stroke(0);
+	for (var i = 0; i < cells.length; i ++){
+		cells[i].draw();
+		cells[i].update();
+	}
+}
+	</script>
+</body>
+</html>

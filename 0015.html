@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>0015</title>
+  <style>
+    body {
+      margin:0;
+    }
+  </style>
+</head>
+<body>
+
+  <script src='js/p5.js'></script>
+  <script>
+
+  'use strict';
+
+  const w = 506;
+  const h = w;
+  let size = 10;
+  let step = 20;
+  let z = 0;
+  let len = 1;
+  const min = size * 6;
+  const max = w - min;
+
+  function setup() {
+    createCanvas(w, h);
+    background(0);
+    stroke(255);
+    frameRate(12);
+    rectMode(CENTER);
+  };
+
+  function draw() {
+    background(0);
+    noFill();
+    for (let i = min; i < max; i+=step) {
+      for (let j = min; j < max; j+=step) {
+        switch (Math.round(random(0,1))) {
+          case 0:
+            stroke(random(255), random(255));
+            strokeWeight(random(1));
+            rect(i, j, 10, 10);
+            break;
+          case 1:
+            stroke( 200, random(255), random(255));
+            strokeWeight(random(10));
+            ellipse(i, j, size, size);
+            break;
+          default:
+          console.log('asdf');
+        };
+    	 };
+      };
+      z += 0.01;
+
+  }
+
+
+
+  </script>
+</body>
+</html>
